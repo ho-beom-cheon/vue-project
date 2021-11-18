@@ -1,13 +1,13 @@
 <template>
-  <div class="name">
+  <div :class="nameClass">
     {{ name }}
   </div>
-  <div>
-    {{ name2 }}
-  </div>
+  <!--  'v-bind:' 는 ':' 로 생략가능-->
+  <input :type="type" :value="name">
+  <!--  'v-on:' 는 '@' 로 생략가능-->
   <button
       class="btn btn-primary"
-      v-on:click="updateName"
+      @click="updateName"
   >
     Click
   </button>
@@ -21,6 +21,8 @@ import { reactive } from 'vue';  // reactive : Object, Array
 export default {
   setup() {
     const name = ref('hobeom coder');
+    const type = ref('number');
+    const nameClass = ref('');
     const name2 = reactive({
       id : 1
     });
@@ -28,12 +30,16 @@ export default {
     const updateName = () => {
       //
       name.value = 'change coder';   // ref를 사용할 때는 name.value 형태로 사용
+      type.value = 'text';
+      nameClass.value = 'name';
       name2.id = 2;                  // 안에 들어있는 값을 바로 접근 가능
       console.log(name);
     };
 
     return {
       name,
+      type,
+      nameClass,
       name2,
       updateName,
     };
