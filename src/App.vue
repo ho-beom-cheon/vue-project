@@ -1,26 +1,36 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="name">
+    {{ name }}
+  </div>
+  <button
+      class="btn btn-primary"
+      v-on:click="updateName"
+  >
+    Click
+  </button>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
+  setup() {
+    let name = 'hobeom coder';
+
+    const updateName = () => {
+      name = 'change coder';
+      console.log(name);
+    };
+
+    return {
+      name,
+      updateName,
+    };
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+.name {
+  color: red;
 }
 </style>
