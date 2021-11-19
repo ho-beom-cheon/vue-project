@@ -22,7 +22,17 @@
         </button>
       </div>
     </form>
-    {{ todos }}
+
+    <div class="card mt-2">
+      <div class="card-body p-2">
+        {{ todos[0].subject }}
+      </div>
+    </div>
+    <div class="card mt-2">
+      <div class="card-body p-2">
+        {{ todos[1].subject }}
+      </div>
+    </div>
   </div>
 </template>
 
@@ -33,7 +43,10 @@ import { ref } from 'vue';       // ref : 기본자료형
 export default {
   data() {
     const todo = ref('');
-    const todos = ref([]);
+    const todos = ref([
+      {id: 1, subject: '휴대폰 사기'},
+      {id: 2, subject: '장보기'}
+    ]);
 
     const onSubmit = () => {
       //e.preventDefault();  // submit 새로고침 방지
